@@ -92,6 +92,20 @@ var obj = {};
 var obj = new Object();
 ```
 
+##プロパティの削除に```delete```は使わない
+プロパティの削除より、nullを代入する方が処理が速いため
+
+良い例
+```javascript
+obj.hoge = null;
+```
+
+悪い例
+
+```javascript
+delete obj.hoge
+```
+
 ##jQuery
 
 ###プロトタイプチェーンをなるべくつなげる
