@@ -37,8 +37,21 @@ if(string === "hoge"){
 	//処理
 }
 ```
+##for文で、配列を使う場合は最初に配列の長さを変数に格納しておく
+arrayのlengthプロパティに何回もアクセスすると処理速度に影響が出るため
 
-
+悪い例
+```javascript
+for(var i = 0; i < array.length; i++){
+	//処理
+}
+```
+良い例
+```javascript
+for(var i = 0, length = array.length; i < length; i++){
+	//処理
+}
+```
 ##jQuery
 
 ###プロトタイプチェーンをなるべくつなげる
@@ -54,6 +67,7 @@ $(".hoge").addClass("active")
 ```
 
 ###複数回要素を使用する場合は最初に変数にデータを格納しておく
+$(セレクタ)の処理に時間がかかるため
 
 例
 
