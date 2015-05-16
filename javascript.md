@@ -52,6 +52,23 @@ for(var i = 0, length = array.length; i < length; i++){
 	//処理
 }
 ```
+
+##オブジェクトの指定方法
+オブジェクトの指定は見やすいように下の「良い例」のように記述するようにしましょう
+
+良い例
+```javascript
+var map = {
+	hoge: "hogehoge",
+	test: "testtest"
+}
+```
+
+悪い例
+```javascript
+var map = {hoge: "hogehoge",
+test: "testtest"}
+
 ##jQuery
 
 ###プロトタイプチェーンをなるべくつなげる
