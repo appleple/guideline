@@ -83,6 +83,7 @@ var map = {
 ```javascript
 var map = {hoge: "hogehoge",
 test: "testtest"}
+```
 
 2. オブジェクトの生成では```new Object()```を使わないようにしましょう
 {}で生成する方が、記述がシンプルで、かつ実行速度が速いです。
