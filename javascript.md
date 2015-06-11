@@ -9,6 +9,7 @@
   1. [for文で、配列をループさせる場合は最初に配列の長さを変数に格納しておく](#for文で、配列を使う場合は最初に配列の長さを変数に格納しておく)
   1. [オブジェクトの指定方法](#オブジェクトの指定方法)
   1. [プロパティの削除にdeleteは使わない](#プロパティの削除にdeleteは使わない)
+  2. [コンストラクタの呼び出し方](#コンストラクタの呼び出し方)
   1. [jQuery](#jQuery)
 
 ##なるべくグローバル変数を使用しない
@@ -110,6 +111,37 @@ obj.hoge = null;
 
 ```javascript
 delete obj.hoge
+```
+
+##コンストラクタの呼び出し方
+
+良い例
+```javascript
+var obj = new Hoge();
+```
+
+悪い例
+
+```javascript
+var obj = new Hoge;
+```
+
+###ただしObjectとArrayは例外
+newをつけずに{}や[]で宣言します。
+
+
+悪い例
+
+```javascript
+var obj = new Object();
+var arr = new Array();
+```
+
+良い例
+
+```javascript
+var obj = {};
+var arr = [];
 ```
 
 ##jQuery
