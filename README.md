@@ -7,3 +7,4 @@
 - [CSS](https://github.com/appleple/guideline/blob/master/css.md)
 - [画像](https://github.com/appleple/guideline/blob/master/image.md)
 - [LESS](https://github.com/appleple/guideline/blob/master/less.md)
+- [JavaScript](https://github.com/appleple/guideline/blob/master/javascript.md)
