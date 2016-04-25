@@ -9,20 +9,20 @@
 * _mixins.scss ... mixin集
 * _extends.scss ... extend集
 
-//　ベース
+###ベース
 * _base.scss ... 全体のベースとなるスタイル。body、aタグなど
 
-//　レイアウト
+###レイアウト
 * _layout.scss ... レイアウト
 
-//　パーツ
+###パーツ
 * _type.scss ... 見出し、リスト、段落など
 * _button.scss ... ボタン
 * _table.scss ... テーブル
 * _navbar.scss ... ナビゲーション
 * _label.scss ... ラベル
 
-// モジュール
+###モジュール
 * _header.scss ... ヘッダー
 * _footer.scss ... フッター
 
@@ -31,7 +31,7 @@
 * _summary.scss ... サマリー
 * _headline.scss ... ヘッドライン
 
-// コンテンツ
+###コンテンツ
 * _entry.scss ... エントリー作成画面、ユニット
 * _form.scss ... お問い合わせフォームなど
 
