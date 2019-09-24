@@ -1,16 +1,17 @@
 基本的なファイル構成
 ------
-* top.html
+* _top.html
 * index.html
-* entry.html
+* _entry.html
 * 404.html
 
 
 基本的なフォルダ構成
 ------
+* /_layouts/・・・テンプレートのベースファイル
 * /admin/・・・管理画面で使用しているファイル
 * /include/・・・インクルード機能を使用して読み込まれているファイル
-* /vars/ ・・・ テンプレートの変数化（Set_Template、Set_Rendered）
+* /vars/ ・・・ テンプレートの変数化（Set_Template、Set_Rendered） ※追記include構文の追加によりあまり使用頻度低
 
 ### テンプレートの分岐の際に使用するIDとコードについて
 テンプレートを分岐する際、ブログコードやブログIDなどを使用しますが、予測のしやすさを重視し、基本的に使用するものはコードとします。
