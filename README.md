@@ -1,16 +1,155 @@
 # コーディングガイドライン
+
 有限会社アップルップルで使用しているコーディングガイドラインです。
-
 有限会社アップルップルで制作案件を行うときは、各ガイドラインに従うようにしてください。
-
 ガイドラインはコーディングにまつわる社員同士のストレスを軽減やより効率よくコードを書くために設定しています。もし、今の制作手法に合わないガイドラインがあればフロントエンドエンジニア・マークアップエンジニア同士で相談し、随時内容を更新していきましょう。
-
 現在、以下のガイドラインを管理しています。
 
-- [HTML](https://github.com/appleple/guideline/blob/master/html.md)
-- [CSS](https://github.com/appleple/guideline/blob/master/css.md)
-- [画像](https://github.com/appleple/guideline/blob/master/image.md)
-- [SCSS](https://github.com/appleple/guideline/blob/master/scss.md)
-- [LESS](https://github.com/appleple/guideline/blob/master/less.md)
-- [JavaScript](https://github.com/appleple/guideline/blob/master/javascript.md)
-- [a-blog cms](https://github.com/appleple/guideline/blob/master/ablogcms.md)
+
+## 命名規則
+
+<table class="table">
+	<tr>
+		<td>ルール</td>
+		<td>理由</td>
+	</tr>
+	<tr>
+		<td>直接表示したくないテンプレートは、ファイル名の最初にアンダーバーをつける（インクルードファイルなど, top.html, entry.html, _layouts/）</td>
+		<td>意図しないテンプレートを表示させないため。</td>
+	</tr>
+	<tr>
+		<td>変数名の接続は「_」で行うカテゴリーやブログコードは「-」</td>
+		<td>クラス名と変数名を区別するため統一する。変数名は「_」のみ、クラス名は「-」またはBEMを使うなら「-」と「_」にすることで有事の時には一括変換しやすくなる。CFGのときは「group_〇〇」にする単純な名前はつけない（絶対に「_」をつけるようにする）</td>
+	</tr>
+	<tr>
+		<td>モジュールIDは「モジュール名_使用場所名（コンテンツの種類）」のように命名する。基本的に全て小文字。Entry系の時は、「entry_」を省略する。フィールドモジュール表示用のモジュールIDは、モジュールフィールド「MF_〇〇」、カテゴリフィールド「CF_〇〇」、ブログフィールド「BF_〇〇」、のように命名する。</td>
+		<td>モジュールID名だけでなんのモジュールでどこに使われているかわかるようにするため。機能名を含める理由は、他のモジュール使用時に被らないようにするため。</td>
+	</tr>
+	<tr>
+		<td>モジュールのカスタムフィールドは以下のように読み込むようにする。@include("/admin/module/id_%&lcub;MODULE_ID&rcub;.html")</td>
+		<td>モジュールIDに対するカスタムフィールドの設定がどこに書かれているかわかりやすくするため</td>
+	</tr>
+	<tr>
+		<td>特定のブログ・カテゴリー・エントリーのカスタムフィールドを読み込むときは、コード名を含めてファイルを分岐する。@include("/admin/category/ccd/%&lcub;CCD&rcub;.html")@include("/admin/entry/ecd/%&lcub;ECD&rcub;")@include("/admin/blog/bcd/%&lcub;BCD&rcub;.html")</td>
+		<td>ID名よりコード名のほうが、ファイル名だけで内容がわかりやすいため。</td>
+	</tr>
+	<tr>
+		<td>共通のカスタムフィールドは「field_〇〇.html」にする@include("/admin/category/field_ogp.html")</td>
+		<td>ファイルの一覧を揃えるため</td>
+	</tr>
+	<tr>
+		<td>カスタマイズしたグローバル変数は全部大文字で書く単語をつなげるときは「_」「CUSTOM」を接頭辞につける</td>
+		<td>a-blog cmsの公式の命名規則に合わせる。「CUSTOM」とつけることで、拡張したグローバル変数か判断するため。</td>
+	</tr>
+	<tr>
+		<td>カスタマイズした校正オプションは全部小文字で書く単語をつなげるときはキャメルケース「custom」を接頭辞につける</td>
+		<td>a-blog cmsの公式の命名規則に合わせる。「custom」とつけることで、拡張した校正オプションか判断するため。</td>
+	</tr>
+	<tr>
+		<td>ファイル名やフォルダ名は「-」つなぎで書く。（モジュール名が入っていてもハイフンにする、画像もハイフン）</td>
+		<td>URLに反映されるときに「_」だと見にくくなるので「-」を使うようにする。</td>
+	</tr>
+	<tr>
+		<td>フォームIDは用途がわかるように「form_〇〇」とする</td>
+		<td>フォームIDは変数扱いなので「_」。</td>
+	</tr>
+	<tr>
+		<td>jsのクラスを付ける時は、「js-」という接頭辞を付ける</td>
+		<td>スタイルに適応しているとそのHTMLごと消しちゃう可能性があるので</td>
+	</tr>
+</table>
+
+## テンプレート周り
+
+<table class="table">
+	<tr>
+		<td>特別な理由がない限り、更新者が更新できる箇所は閲覧画面から変更ボタンを設置する。納品時にそのボタンを残すかは案件ごとに判断する。@include("/admin/module/setting.html")という名前で空ファイルを設置すれば消せるようにしておく。</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>納品前に管理ボックス内に設置する必要な編集ボタンをディレクターに確認する</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>SEO設定のカスタムフィールド、SEO確認用テンプレートを全てのページで読み込む。</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>表示側の校正オプションでresizeImgを使うときは推奨サイズを記入する例）〇〇x〇〇推奨</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>テキストエリアのカスタムフィールドはデフォルトかLiteEditorで統一する</td>
+		<td>お客さんが入力方法を混乱してしまうため。</td>
+	</tr>
+	<tr>
+		<td>カスタムフィールドメーカーで生成した場合、クラスが全て acms-admin-form-width-full になっているので、入るテキストの長さに合わせたクラスに変更する。</td>
+		<td>カスタムフィールドメーカーの仕様であるため、カスタムフィールドメーカーの機能を改善する。</td>
+	</tr>
+	<tr>
+		<td>管理テンプレートやインクルードファイルは理由がない限りルートテーマに作成する</td>
+		<td>テンプレートの探しやすさを上げることと、1つのテンプレートを応用しやすくするため</td>
+	</tr>
+	<tr>
+		<td>ルートテーマにカテゴリーのディレクトリを置かない例）BID1のときように「root@site2019」のようなテーマを用意する</td>
+		<td>ルートテーマを継承する子テーマを使用した時も、意図しないカテゴリーのテンプレートが表示されてしまうため。</td>
+	</tr>
+	<tr>
+		<td>_layouts にベーステンプレートを置いて、継承するやり方で作っていく</td>
+		<td>レイアウトの変更に強くなるため</td>
+	</tr>
+	<tr>
+		<td>インクルードファイル化したテンプレートで、モジュールIDはインクルード変数で指定するようにする。</td>
+		<td>同じモジュールを使い回すときでも、モジュールIDが変更される可能性は高いので、モジュールIDの依存性をテンプレートから除外するため</td>
+	</tr>
+	<tr>
+		<td>/admin/xxx/field.htmlか/admin/xxx/field_ foot.htmlにカスタムフィールドの記述をする。（旧edit.htmlは使わない）</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>テンプレートを分岐する時は、グローバル変数を使う</td>
+		<td>IFブロックは実行順序があとになるので、表示速度が遅くなってしまう可能性がある</td>
+	</tr>
+	<tr>
+		<td>カスタムユニットを作る時はextend.htmlで作成する（custom.html は非推奨）</td>
+		<td>拡張でないカスタムユニットは1つしか作れないので</td>
+	</tr>
+	<tr>
+		<td>Entry_SummaryでいいものはなるべくEntry_Summaryを使う。</td>
+		<td>Entry_Bodyは表示速度が遅くなるので。</td>
+	</tr>
+	<tr>
+		<td>インクルードで対応できる場合は、セットテンプレートは使わない。</td>
+		<td></td>
+	</tr>
+</table>
+
+## コード全般 CSS / JS
+
+<table class="table">
+	<tr>
+		<td>a-starter-kit の .editorconfig に準ずる　・html/css/js インデントはスペース2つ　・php インデントはスペース4つhttps://github.com/appleple/a-starter-kit</td>
+		<td>記述方法の共通化のため</td>
+	</tr>
+	<tr>
+		<td>CSSはa-starter-kitのstylelintrcに準ずる 同梱されているwebpackで自動で適応される</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>JSはa-starter-kitのeslintrcに準ずる 同梱されているwebpackで自動で適応される</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>エントリー内のHTMLタグ自体にデフォルトのスタイルを適用する。</td>
+		<td>マークダウンや、WYSIWYGで投稿されても使えるようにするため。エントリー内のHTML要素のスタイルはマークダウンで投稿されたことを考慮する。</td>
+	</tr>
+	<tr>
+		<td>ユニットの両端に $grid-space/2 のmargin（標準テーマは10px）がついているので、ユニットのスタイルを付ける時は注意する。</td>
+		<td>図を用意すること</td>
+	</tr>
+	<tr>
+		<td>読み込むスタイルファイルacms-admin.cssacms.css（ユニット表示しない場合は読み込まなくてもOK）acms.cssは使用テーマ内にコピーして持ってくるsassを使っている場合は acms.scss をimportすること。acms.scssでは下記をimportする。@import "../../../../system/scss/functions.scss";@import "../../../../system/scss/variable.scss";@import "../../../../system/scss/mixins.scss";@import "../../../../system/scss/grid.scss";@import "../../../../system/scss/unit.scss";</td>
+		<td>acms-admin.css にユニットのスタイルも入っているが、アップデートされるファイルなのでacms.cssも読み込んでおく必要がある。</td>
+	</tr>
+</table>
+
