@@ -8,6 +8,10 @@
 https://github.com/appleple/a-starter-kit/blob/master/.stylelintrc
 
 
+## 1.1 stylelintのルール一覧
+https://stylelint.io/user-guide/rules
+
+
 ## ２ エントリー内のタグのCSS 
 エントリー内のHTMLタグ自体にスタイルを適用する。
 ### NG
