@@ -100,14 +100,13 @@ SEO設定のカスタムフィールド、SEO確認用テンプレートを全�
 
 ## 画像のリサイズ
 
-表示側の校正オプションでresizeImgを使うときは推奨サイズを記入する例）〇〇x〇〇推奨
+表示側の校正オプションで `resizeImg` を使うときは推奨サイズを記入する例）〇〇x〇〇推奨
 
 ## テキスト入力
 
-テキストエリアのカスタムフィールドはデフォルトかLiteEditorで統一する
+テキストエリアのカスタムフィールドはデフォルトか `LiteEditor` で統一する
 
 > お客さんが入力方法を混乱してしまうため。
-
 
 ## includeファイルなどの設置場所
 
@@ -135,7 +134,7 @@ _layouts にベーステンプレートを置いて、継承するやり方で�
 
 ## edit.htmlを使わない
 
-`/admin/xxx/field.html` か `/admin/xxx/field_foot.html` にカスタムフィールドの記述をする。（旧edit.htmlは使わない）
+`/admin/xxx/field.html` か `/admin/xxx/field_foot.html` にカスタムフィールドの記述をする。（旧 `edit.html` は使わない）
 
 ## テンプレートの分岐
 
@@ -146,16 +145,16 @@ _layouts にベーステンプレートを置いて、継承するやり方で�
 
 ## カスタムユニット
 
-カスタムユニットを作る時はextend.htmlで作成する（custom.html は非推奨）
+カスタムユニットを作る時は `extend.html` で作成する（ `custom.html` は非推奨）
 
 > 拡張でないカスタムユニットは1つしか作れないので
 
 
 ## EntrySummary
 
-Entry_BodyではなくなるべくEntry_Summaryをつかう
+`Entry_Body` ではなくなるべく `Entry_Summary` をつかう
 
-> Entry_Bodyは表示速度が遅くなるので。
+> Entry_Body は表示速度が遅くなるので。
 
 ## セットテンプレート非推奨
 
@@ -164,12 +163,14 @@ Entry_BodyではなくなるべくEntry_Summaryをつかう
 
 ## コード全般 CSS / JS
 
-CSS / JSについてはルールを書いても忘れてしまうので、できればNode.jsの環境を整備すること。Node.js製のツールで強制的にルールを適応できる
+CSS / JSについてはルールを書いても忘れてしまうので、できれば `Node.js` の環境を整備すること。`Node.js` 製のツールで強制的にルールを適応できる<br/>
+詳しくはこちらのレポジトリを参照<br/>
+https://github.com/appleple/a-starter-kit
 
 
 ## editorconfig使用 
 
-a-starter-kit の .editorconfig に準ずる　・html/css/js インデントはスペース2つ　・php インデントはスペース4つhttps://github.com/appleple/a-starter-kit</td>
+a-starter-kit の .editorconfig に準ずる　・html/css/js インデントはスペース2つ　・php インデントはスペース4つ</td>
 
 > 記述方法の共通化のため
 
