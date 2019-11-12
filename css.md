@@ -3,7 +3,7 @@
 
 ## 1 stylelint
 
-基本的にCSSのルールはこちらのstylelintrcに準ずる。<br/>
+基本的にCSSのルールはこちらの `stylelintrc` に準ずる。<br/>
 同梱されているwebpackで自動で適応される<br/>
 https://github.com/appleple/a-starter-kit/blob/master/.stylelintrc
 
