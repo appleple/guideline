@@ -14,4 +14,5 @@
 - [JavaScript](./js.md)
 
 CSS / JavaScriptについては全体的にさっと読んでいただければ大丈夫です。<br/>
-[コード全般](./general.md)で解説しますが、CSSやJavaScriptのルールはすべて覚えなくても `stylelint` や `eslint` を使うことで保存時にコード整形されます。
+[コード全般](./general.md) で解説しますが、CSSやJavaScriptのルールはすべて覚えなくても `stylelint` や `eslint` を使うことで保存時にコード整形されます。<br/>
+ルールを適応した理由について書いているので、気になる方は目を通してみてください。
