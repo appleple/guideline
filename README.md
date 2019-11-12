@@ -14,7 +14,7 @@
 
 ## a-blog cms
 
-## （a-blog cms） アンダーバー
+## （a-blog cms） アンダーバー <small>prefer-underbar</small>
 
 直接表示したくないテンプレートは、ファイル名の最初にアンダーバーをつける（インクルードファイルなど, top.html, entry.html, _layouts/）
 
