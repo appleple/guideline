@@ -1,4 +1,4 @@
-# a-blog cms()
+# a-blog cms() {
 
 ## アンダーバー
 
