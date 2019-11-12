@@ -11,16 +11,21 @@
 
 ### 1.1 a-blog cmsの変数名
 変数名の接続は `_` で行う
+```
+<p>{ogp_image@path}</p>
+```
 ### 1.2 ブログ、カテゴリーコードの命名
 カテゴリーやブログコードは `-` 。
+> URLに反映されるときに `_` だと見にくくなるので `-` を使うようにする。
 ### 1.3 カスタムフィールドグループの命名
 CFGのときは `group_〇〇` にする単純な名前はつけない（絶対に `_` をつけるようにする）
+> 単純な命名規則である場合、他の箇所と変数名がかぶる可能性があるため。
 ### 1.4. グローバル変数の命名
 カスタマイズしたグローバル変数は全部大文字で書く単語をつなげるときは `_`  `CUSTOM` を接頭辞につける
 > a-blog cmsの公式の命名規則に合わせる。 `CUSTOM` とつけることで、拡張したグローバル変数か判断するため。
 ### 1.5 校正オプションの命名
 カスタマイズした校正オプションは全部小文字で書く単語をつなげるときはキャメルケース `custom` を接頭辞につける
-> a-blog cmsの公式の命名規則に合わせる。 `custom` とつけることで、拡張した校正オプションか判断するため
+> a-blog cmsの公式の命名規則に合わせる。 `custom` とつけることで、拡張した校正オプションか判断するため。
 ### 1.6 ファイル名の命名
 ファイル名やフォルダ名は `-`つなぎで書く。（モジュール名が入っていてもハイフンにする、画像もハイフン）
 > URLに反映されるときに `_` だと見にくくなるので `-` を使うようにする。
@@ -39,7 +44,7 @@ NG
 
 OK
 ```
-<!-- BEGIN_MODULE Entry_Body id="entry_common" -->
+<!-- BEGIN_MODULE Entry_Body id="body_common" -->
 
 <!-- END_MODULE Entry_Body -->
 ```
@@ -66,18 +71,30 @@ BID1の時は例えば、 `root@site2019` のようなテーマを用意する
 ### 2.4 モジュールIDのテンプレート変数化
 インクルードファイル化したテンプレートで、モジュールIDはインクルード変数で指定するようにする。
 ```js
-@include("/_include/entry", { module_id: "entry_common" })
+@include("/_include/entry/summary.html", { module_id: "entry_common" })
 ```
 > 同じモジュールを使い回すときでも、モジュールIDが変更される可能性は高いので、モジュールIDの依存性をテンプレートから除外するため
-### 2.5 edit.htmlを使わない
+### 2.5 カスタムフィールドの記述にはedit.htmlを使わない
 `/admin/xxx/field.html` か `/admin/xxx/field_foot.html` にカスタムフィールドの記述をする。（旧 `edit.html` は使わない）
 ### 2.6 テンプレートの分岐
 テンプレートを分岐する時は、IFブロックではなくグローバル変数を使う
 > IFブロックは実行順序があとになるので、表示速度が遅くなってしまう可能性がある
+
+NG
+```
+<!-- BEGIN_IF [%{BCD}/eq/news] -->
+@include("/include/field/bcd/news.html")
+<!-- END_IF -->
+```
+
+OK
+```
+@include("/include/field/bcd/%{BCD}.html")
+```
 ### 2.7 カスタムユニット
 カスタムユニットを作る時は `extend.html` で作成する（ `custom.html` は非推奨）
 > 拡張でないカスタムユニットは1つしか作れないので
-### 2.8 Entry_Summary
+### 2.8 Entry系モジュールの使用について
 `Entry_Body` ではなくなるべく `Entry_Summary` をつかう
 > Entry_Body は表示速度が遅くなるので。
 ### 2.9 Set_Template 非推奨
@@ -90,17 +107,27 @@ BID1の時は例えば、 `root@site2019` のようなテーマを用意する
 ```
 > モジュールIDに対するカスタムフィールドの設定がどこに書かれているかわかりやすくするため
 #### 2.10.2 その他のカスタムフィールド
-特定のブログ・カテゴリー・エントリーのカスタムフィールドを読み込むときは、コード名を含めてファイルを分岐する。
+特定のブログ・カテゴリー・エントリーのカスタムフィールドを読み込むときは、コードの種類をカテゴリにし、コード名を含めてファイルを分岐する。
 ```js
+@include("/admin/blog/bcd/%{BCD}.html")
+@include("/admin/category/rccd/%{RCCD}.html")
 @include("/admin/category/ccd/%{CCD}.html")
 @include("/admin/entry/ecd/%{ECD}")
-@include("/admin/blog/bcd/%{BCD}.html")
 ```
+
+ブログコードで階層化している場合には、その分フォルダを作ることになる。
+
+階層化により、ブログコードが「root/child」だった場合のフォルダ構成の例：
+
+```js
+/themes/〇〇/admin/blog/root/child.html
+```
+
 > ID名よりコード名のほうが、ファイル名だけで内容がわかりやすいため。
 #### 2.10.3 共通のカスタムフィールド設置場所
-共通のカスタムフィールドは `field_〇〇.html` にする
+共通のカスタムフィールドは `field-〇〇.html` にする
 ```js
-@include("/admin/category/field_ogp.html")
+@include("/admin/category/field-ogp.html")
 ```
 > ファイルの一覧を揃えるため
 ### 2.11 systemテーマ
