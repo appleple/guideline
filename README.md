@@ -1,4 +1,4 @@
-# appleple Coding Guide() {
+# appleple Coding Guide
 
 有限会社アップルップルで使用しているコーディングガイドラインです。<br/>
 有限会社アップルップルで制作案件を行うときは、各ガイドラインに従うようにしてください。<br/>
@@ -10,5 +10,3 @@
 
 - [a-blog cms](./a-blogcms.md)
 - [コード全般 CSS / JS](./css-js.md)
-
-# }
