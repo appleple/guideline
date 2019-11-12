@@ -12,8 +12,6 @@ a-starter-kit の .editorconfig に準ずる　・html/css/js インデントは
 CSSはa-starter-kitのstylelintrcに準ずる 同梱されているwebpackで自動で適応される
 ### 1.3 eslint使用 
 JSはa-starter-kitのeslintrcに準ずる 同梱されているwebpackで自動で適応される
-### 1.4 `js-`の接頭辞 
-jsが適用される要素には`js-`の接頭辞をつける
 
 
 ## 2. CSS
@@ -145,3 +143,9 @@ $breakpoint-xl-max: ($breakpoint-xl-min - 1); //1439px
 ### 2.6 extendの使用注意
 extendを使うのは悪いことではありませんが、extendの中にextendを使用しないこと。
 階層が深くなってしまうと、効率が悪くなり、メンテナンスがやりにくくなる可能性があります。
+
+
+## JavaScript
+
+### 3.1 `js-`の接頭辞 
+jsが適用される要素には`js-`の接頭辞をつける
