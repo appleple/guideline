@@ -12,3 +12,6 @@
 - [コード全般](./general.md)
 - [CSS](./css.md)
 - [JavaScript](./js.md)
+
+CSS / JavaScriptについては全体的にさっと読んでいただければ大丈夫です。<br/>
+[コード全般](./general.md)で解説しますが、CSSやJavaScriptのルールはすべて覚えなくても `stylelint` や `eslint` を使うことで保存時にコード整形されます。
