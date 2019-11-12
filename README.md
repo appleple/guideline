@@ -36,7 +36,11 @@
 ## モジュールのカスタムフィールドの設置場所
 
 モジュールのカスタムフィールドは以下のように読み込むようにする。
-`@include("/admin/module/id_%{MODULE_ID}.html")`
+
+```js
+@include("/admin/module/id_%{MODULE_ID}.html")
+```
+
 
 > モジュールIDに対するカスタムフィールドの設定がどこに書かれているかわかりやすくするため
 
