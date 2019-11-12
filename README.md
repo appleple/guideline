@@ -1,16 +1,213 @@
 # コーディングガイドライン
-有限会社アップルップルで使用しているコーディングガイドラインです。
 
-有限会社アップルップルで制作案件を行うときは、各ガイドラインに従うようにしてください。
-
-ガイドラインはコーディングにまつわる社員同士のストレスを軽減やより効率よくコードを書くために設定しています。もし、今の制作手法に合わないガイドラインがあればフロントエンドエンジニア・マークアップエンジニア同士で相談し、随時内容を更新していきましょう。
-
+有限会社アップルップルで使用しているコーディングガイドラインです。<br/>
+有限会社アップルップルで制作案件を行うときは、各ガイドラインに従うようにしてください。<br/>
+ガイドラインはコーディングにまつわる社員同士のストレスを軽減やより効率よくコードを書くために設定しています。<br/>
+もし、今の制作手法に合わないガイドラインがあればフロントエンドエンジニア・マークアップエンジニア同士で相談し、随時内容を更新していきましょう。<br/>
 現在、以下のガイドラインを管理しています。
 
-- [HTML](https://github.com/appleple/guideline/blob/master/html.md)
-- [CSS](https://github.com/appleple/guideline/blob/master/css.md)
-- [画像](https://github.com/appleple/guideline/blob/master/image.md)
-- [SCSS](https://github.com/appleple/guideline/blob/master/scss.md)
-- [LESS](https://github.com/appleple/guideline/blob/master/less.md)
-- [JavaScript](https://github.com/appleple/guideline/blob/master/javascript.md)
-- [a-blog cms](https://github.com/appleple/guideline/blob/master/ablogcms.md)
+## 目次
+
+- a-blog cms
+- JavaScript / CSS
+
+
+## a-blog cms
+
+## （a-blog cms） アンダーバー
+
+直接表示したくないテンプレートは、ファイル名の最初にアンダーバーをつける（インクルードファイルなど, top.html, entry.html, _layouts/）
+
+> 意図しないテンプレートを表示させないため。
+
+
+## （a-blog cms） 変数名の接続
+
+変数名の接続は「_」で行うカテゴリーやブログコードは「-」。
+クラス名と変数名を区別するため統一する。変数名は「_」のみ、クラス名は「-」またはBEMを使うなら「-」と「_」にすることで有事の時には一括変換しやすくなる。CFGのときは「group_〇〇」にする単純な名前はつけない（絶対に「_」をつけるようにする）
+
+
+## （a-blog cms） モジュールの命名規則
+
+モジュールIDは「モジュール名_使用場所名（コンテンツの種類）」のように命名する。基本的に全て小文字。Entry系の時は、「entry_」を省略する。フィールドモジュール表示用のモジュールIDは、モジュールフィールド「MF_〇〇」、カテゴリフィールド「CF_〇〇」、ブログフィールド「BF_〇〇」、のように命名する。
+
+> モジュールID名だけでなんのモジュールでどこに使われているかわかるようにするため。機能名を含める理由は、他のモジュール使用時に被らないようにするため。
+
+## （a-blog cms） モジュールのカスタムフィールドの設置場所
+
+モジュールのカスタムフィールドは以下のように読み込むようにする。@include("/admin/module/id_%{MODULE_ID}.html")
+
+> モジュールIDに対するカスタムフィールドの設定がどこに書かれているかわかりやすくするため
+
+## （a-blog cms） その他のカスタムフィールドの設置場所
+
+特定のブログ・カテゴリー・エントリーのカスタムフィールドを読み込むときは、コード名を含めてファイルを分岐する。@include("/admin/category/ccd/%&lcub;CCD&rcub;.html")@include("/admin/entry/ecd/%&lcub;ECD&rcub;")@include("/admin/blog/bcd/%&lcub;BCD&rcub;.html")
+
+> ID名よりコード名のほうが、ファイル名だけで内容がわかりやすいため。
+
+## （a-blog cms） 共通のカスタムフィールド設置場所
+
+共通のカスタムフィールドは「field_〇〇.html」にする@include("/admin/category/field_ogp.html")
+
+> ファイルの一覧を揃えるため
+
+## （a-blog cms） グローバル変数の命名
+
+カスタマイズしたグローバル変数は全部大文字で書く単語をつなげるときは「_」「CUSTOM」を接頭辞につける
+
+> a-blog cmsの公式の命名規則に合わせる。「CUSTOM」とつけることで、拡張したグローバル変数か判断するため。
+
+## （a-blog cms） 校正オプションの命名
+
+カスタマイズした校正オプションは全部小文字で書く単語をつなげるときはキャメルケース「custom」を接頭辞につける
+
+> a-blog cmsの公式の命名規則に合わせる。「custom」とつけることで、拡張した校正オプションか判断するため
+
+## （a-blog cms） ファイル名の命名
+
+ファイル名やフォルダ名は「-」つなぎで書く。（モジュール名が入っていてもハイフンにする、画像もハイフン）
+
+> URLに反映されるときに「_」だと見にくくなるので「-」を使うようにする。
+
+## （a-blog cms） 優しさボタン
+
+特別な理由がない限り、更新者が更新できる箇所は閲覧画面から変更ボタンを設置する。納品時にそのボタンを残すかは案件ごとに判断する。
+`@include("/admin/module/setting.html")` という名前で空ファイルを設置すれば消せるようにしておく。
+
+## （a-blog cms） アクションボックス
+
+納品前に管理ボックス内に設置する必要な編集ボタンをディレクターに確認する
+
+## （a-blog cms） SEO設定ボックス
+
+SEO設定のカスタムフィールド、SEO確認用テンプレートを全てのページで読み込む。
+
+
+## （a-blog cms） 画像のリサイズ
+
+表示側の校正オプションでresizeImgを使うときは推奨サイズを記入する例）〇〇x〇〇推奨
+
+## （a-blog cms） テキスト入力
+
+テキストエリアのカスタムフィールドはデフォルトかLiteEditorで統一する
+
+> お客さんが入力方法を混乱してしまうため。
+
+
+## （a-blog cms） includeファイルなどの設置場所
+
+管理テンプレートやインクルードファイルは理由がない限りルートテーマに作成する
+
+> テンプレートの探しやすさを上げることと、1つのテンプレートを応用しやすくするため
+
+
+## （a-blog cms） ルートテーマのカスタマイズ
+BID1の時は例えば、「root@site2019」のようなテーマを用意する
+
+> ルートテーマを継承する子テーマを使用した場合、意図しないカテゴリーのテンプレートが表示されてしまうため。
+
+## （a-blog cms） テンプレートの継承
+
+_layouts にベーステンプレートを置いて、継承するやり方で作っていく
+
+> レイアウトの変更に強くなるため
+
+## （a-blog cms） モジュールIDのテンプレート変数化
+
+インクルードファイル化したテンプレートで、モジュールIDはインクルード変数で指定するようにする。
+
+> 同じモジュールを使い回すときでも、モジュールIDが変更される可能性は高いので、モジュールIDの依存性をテンプレートから除外するため
+
+## （a-blog cms） edit.htmlを使わない
+
+`/admin/xxx/field.html` か `/admin/xxx/field_foot.html` にカスタムフィールドの記述をする。（旧edit.htmlは使わない）
+
+## （a-blog cms） テンプレートの分岐
+
+テンプレートを分岐する時は、IFブロックではなくグローバル変数を使う
+
+> IFブロックは実行順序があとになるので、表示速度が遅くなってしまう可能性がある
+
+
+## （a-blog cms） カスタムユニット
+
+カスタムユニットを作る時はextend.htmlで作成する（custom.html は非推奨）
+
+> 拡張でないカスタムユニットは1つしか作れないので
+
+
+## （a-blog cms） EntrySummary
+
+Entry_BodyではなくなるべくEntry_Summaryをつかう
+
+> Entry_Bodyは表示速度が遅くなるので。
+
+## （a-blog cms） セットテンプレート非推奨
+
+インクルードで対応できる場合は、セットテンプレートは使わない
+
+
+## コード全般 CSS / JS
+
+CSS / JSについてはルールを書いても忘れてしまうので、できればNode.jsの環境を整備すること。Node.js製のツールで強制的にルールを適応できる
+
+
+## (CSS / JS) editorconfig使用 
+
+a-starter-kit の .editorconfig に準ずる　・html/css/js インデントはスペース2つ　・php インデントはスペース4つhttps://github.com/appleple/a-starter-kit</td>
+
+> 記述方法の共通化のため
+
+## (CSS / JS) stylelint使用 
+
+CSSはa-starter-kitのstylelintrcに準ずる 同梱されているwebpackで自動で適応される
+
+## (CSS / JS) eslint使用 
+
+JSはa-starter-kitのeslintrcに準ずる 同梱されているwebpackで自動で適応される
+
+## (CSS / JS) `js-`の接頭辞 
+
+jsが適用される要素には`js-`の接頭辞をつける
+
+
+## (CSS / JS) エントリー内のタグのCSS 
+
+エントリー内のHTMLタグ自体にスタイルを適用する。
+
+### NG
+
+```css
+.acms-entry p.paragraph {
+
+}
+.acms-entry h1.title {
+
+}
+```
+
+### OK
+```css
+.acms-entry p {
+
+}
+.acms-entry h1 {
+
+}
+```
+
+> マークダウンや、WYSIWYGで投稿されても使えるようにするため。エントリー内のHTML要素のスタイルはマークダウンで投稿されたことを考慮する。
+
+## (CSS / JS) 必要なCSS 
+
+読み込むスタイルファイル `acms-admin.css` `acms.css`（ユニット表示しない場合は読み込まなくてもOK）acms.cssは使用テーマ内にコピーして持ってくるsassを使っている場合は acms.scss をimportすること。acms.scssでは下記をimportする。
+
+```scss
+@import "../../../../system/scss/functions.scss";
+@import "../../../../system/scss/variable.scss";
+@import "../../../../system/scss/mixins.scss";
+@import "../../../../system/scss/grid.scss";
+@import "../../../../system/scss/unit.scss";
+```
+
+> acms-admin.css にユニットのスタイルも入っているが、アップデートされるファイルなのでacms.cssも読み込んでおく必要がある。
