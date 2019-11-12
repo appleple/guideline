@@ -13,6 +13,7 @@
 - [CSS](./css.md)
 - [JavaScript](./js.md)
 
+[a-blog cms](./a-blogcms.md)については制作に携わる方は *必ず* 目を通してください。<br/>
 CSS / JavaScriptについては全体的にさっと読んでいただければ大丈夫です。<br/>
 [コード全般](./general.md) で解説しますが、CSSやJavaScriptのルールはすべて覚えなくても `stylelint` や `eslint` を使うことで保存時にコード整形されます。<br/>
 ルールを適応した理由について書いているので、気になる方は目を通してみてください。
