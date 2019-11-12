@@ -1,0 +1,27 @@
+{
+  "name": "guideline",
+  "version": "1.0.0",
+  "description": "有限会社アップルップルで使用しているコーディングガイドラインです。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appleple/guideline.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appleple/guideline/issues"
+  },
+  "homepage": "https://github.com/appleple/guideline#readme",
+  "devDependencies": {
+    "textlint": "^11.5.0",
+    "textlint-rule-preset-ja-spacing": "^2.0.1",
+    "textlint-rule-preset-ja-technical-writing": "^3.1.3",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+  }
+}
