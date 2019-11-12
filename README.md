@@ -9,4 +9,6 @@
 ## 目次
 
 - [a-blog cms](./a-blogcms.md)
-- [コード全般 CSS / JS](./css-js.md)
+- [コード全般](./general.md)
+- [CSS](./css.md)
+- [JavaScript](./js.md)
