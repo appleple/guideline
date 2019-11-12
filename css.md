@@ -36,7 +36,8 @@ https://stylelint.io/user-guide/rules
 > マークダウンや、WYSIWYGで投稿されても使えるようにするため。エントリー内のHTML要素のスタイルはマークダウンで投稿されたことを考慮する。
 
 ## ３ (CSS / JS) 必要なCSS 
-読み込むスタイルファイル `acms-admin.css` `acms.css`（ユニット表示しない場合は読み込まなくてもOK）acms.cssは使用テーマ内にコピーして持ってくるsassを使っている場合は acms.scss をimportすること。acms.scssでは下記をimportする。
+読み込むスタイルファイル `acms-admin.css` `acms.css`（ユニット表示しない場合は読み込まなくてもOK）
+`acms.css` は使用テーマ内にコピーして持ってくる `sass` を使っている場合は `acms.scss` を `import` すること。`acms.scss` では下記を `import` する。
 
 ```scss
 @import "../../../../system/scss/functions.scss";
@@ -138,5 +139,5 @@ $breakpoint-xl-max: ($breakpoint-xl-min - 1); //1439px
 使用する際はわかりやすくコメントを書くよう気をつけて使用してください。
 
 ## 7 extendの使用注意
-extendを使うのは悪いことではありませんが、extendの中にextendを使用しないこと。
-階層が深くなってしまうと、効率が悪くなり、メンテナンスがやりにくくなる可能性があります。
+extendを使うのは、悪いことではありませんが、extendの中にextendを使用しないこと。
+階層が深くなってしまうと、効率が悪くなり、メンテナンス性が低下するおそれがあります。
