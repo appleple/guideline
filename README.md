@@ -12,6 +12,7 @@
 - [コード全般](./general.md)
 - [CSS](./css.md)
 - [JavaScript](./js.md)
+- [PHP](./php.md)
 
 [a-blog cms](./a-blogcms.md)については制作に携わる方は **必ず** 目を通してください。<br/>
 [CSS](./css.md) / [JavaScript](./js.md)については全体的にさっと読んでいただければ大丈夫です。<br/>
